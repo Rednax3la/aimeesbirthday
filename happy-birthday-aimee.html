@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aimee!! 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Caveat:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:      #fdf8f0;
+    --ink:        #1a1523;
+    --ink-soft:   #4a4260;
+    --ink-dim:    #8a82a0;
+    --coral:      #f4623a;
+    --coral-soft: #fde8e2;
+    --indigo:     #3730a3;
+    --indigo-soft:#eef2ff;
+    --lilac:      #c4b5fd;
+    --lilac-soft: #f5f3ff;
+    --gold:       #f59e0b;
+    --gold-soft:  #fef3c7;
+    --mint:       #34d399;
+    --white:      #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ========== GRAIN TEXTURE ========== */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ========== REVEAL ANIMATION ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  /* Diagonal colour wash */
+  .hero-wash {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 20%, #3730a344, transparent),
+      radial-gradient(ellipse 60% 70% at 10% 80%, #f4623a22, transparent);
+    pointer-events: none;
+  }
+
+  /* Big BG text */
+  .hero-bg-text {
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 22vw, 18rem);
+    color: white;
+    opacity: 0.03;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: -4px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+  }
+
+  .hero-pretag {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    animation: slideDown 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(3.5rem, 13vw, 8rem);
+    line-height: 0.9;
+    color: white;
+    letter-spacing: -2px;
+    animation: slideUp 0.8s ease both 0.2s;
+    opacity: 0;
+  }
+  .hero h1 .name-coral {
+    display: block;
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .hero-kid-note {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--lilac);
+    margin-top: 1.5rem;
+    animation: slideUp 0.8s ease both 0.5s;
+    opacity: 0;
+  }
+
+  .hero-toph {
+    display: inline-block;
+    background: var(--indigo);
+    border: 1px solid var(--lilac);
+    color: var(--lilac);
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    padding: 8px 20px;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    animation: slideUp 0.8s ease both 0.7s;
+    opacity: 0;
+    position: relative;
+  }
+  .hero-toph::before {
+    content: '👁 ig: eventophsawthiscoming —';
+    display: block;
+    font-size: 0.62rem;
+    color: var(--ink-dim);
+    margin-bottom: 2px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+
+  .scroll-down {
+    margin-top: 3rem;
+    animation: slideUp 0.8s ease both 1s, pulse-gentle 3s ease-in-out infinite;
+    opacity: 0;
+    color: var(--ink-dim);
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--coral), transparent);
+  }
+  @keyframes pulse-gentle {
+    0%,100% { opacity: 0.6; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(5px); }
+  }
+
+  /* ========== SECTION CONTAINERS ========== */
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  .wrap-tight { padding-top: 2rem; padding-bottom: 2rem; }
+
+  /* ========== STICKER / LABEL ========== */
+  .sticker {
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    padding: 5px 16px;
+    border-radius: 6px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  .sticker.coral { background: var(--coral); color: white; }
+  .sticker.indigo { background: var(--indigo); color: white; }
+  .sticker.gold { background: var(--gold); color: var(--ink); }
+  .sticker.mint { background: var(--mint); color: var(--ink); }
+  .sticker.ink { background: var(--ink); color: white; }
+
+  /* ========== ZINE CARD ========== */
+  .zcard {
+    background: var(--white);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    border: 2px solid var(--ink);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .zcard:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+  .zcard.coral-border { border-color: var(--coral); box-shadow: 5px 5px 0 var(--coral); }
+  .zcard.coral-border:hover { box-shadow: 7px 7px 0 var(--coral); }
+  .zcard.indigo-border { border-color: var(--indigo); box-shadow: 5px 5px 0 var(--indigo); }
+  .zcard.indigo-border:hover { box-shadow: 7px 7px 0 var(--indigo); }
+  .zcard.gold-border { border-color: var(--gold); box-shadow: 5px 5px 0 var(--gold); }
+  .zcard.gold-border:hover { box-shadow: 7px 7px 0 var(--gold); }
+  .zcard.mint-border { border-color: var(--mint); box-shadow: 5px 5px 0 var(--mint); }
+  .zcard.mint-border:hover { box-shadow: 7px 7px 0 var(--mint); }
+
+  .zcard h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 4vw, 1.9rem);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .zcard h2 .italic { font-style: italic; }
+  .zcard p {
+    font-size: 0.93rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem;
+  }
+  .zcard p:last-of-type { margin-bottom: 0; }
+  .zcard p strong { color: var(--ink); }
+  .zcard p em { font-style: italic; }
+
+  /* ========== ARC TIMELINE (camp story) ========== */
+  .arc-timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 520px) { .arc-timeline { grid-template-columns: 1fr; } }
+
+  .arc-step {
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    border-radius: 14px;
+    padding: 1.25rem;
+    position: relative;
+  }
+  .arc-step .arc-num {
+    position: absolute;
+    top: -14px;
+    left: 16px;
+    background: var(--ink);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+  }
+  .arc-step .arc-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    margin-top: 0.3rem;
+  }
+  .arc-step .arc-text {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* full-width arc step */
+  .arc-step.full { grid-column: 1 / -1; background: var(--ink); color: white; border-color: var(--ink); }
+  .arc-step.full .arc-num { background: var(--coral); }
+  .arc-step.full .arc-label { color: var(--coral); }
+  .arc-step.full .arc-text { color: #a09ab8; }
+  .arc-step.full .arc-text em { color: var(--lilac); font-style: normal; }
+
+  /* ========== PULL QUOTE ========== */
+  .pull-quote {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .pull-quote blockquote {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .pull-quote blockquote .coral { color: var(--coral); }
+  .pull-quote .attr {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--ink-dim);
+    margin-top: 1rem;
+  }
+
+  /* ========== BAND / COLOUR BLOCK ========== */
+  .band {
+    background: var(--ink);
+    padding: 4rem 1.5rem;
+    color: white;
+  }
+  .band-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .band h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+  }
+  .band h2 .coral { color: var(--coral); }
+  .band h2 .lilac { color: var(--lilac); }
+  .band p {
+    font-size: 0.93rem;
+    line-height: 1.9;
+    color: #a09ab8;
+    max-width: 560px;
+    margin-bottom: 1rem;
+  }
+  .band p strong { color: white; }
+  .band p .teal-pop { color: var(--mint); font-style: italic; }
+  .band p .gold-pop { color: var(--gold); }
+
+  /* ========== ANIME CARD ========== */
+  .manga-panel {
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 1rem;
+  }
+  .manga-panel-header {
+    background: var(--ink);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .manga-panel-body {
+    padding: 1.5rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .manga-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #e5e7eb;
+  }
+  .manga-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .manga-icon { font-size: 2rem; min-width: 2.5rem; line-height: 1; }
+  .manga-content .manga-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .manga-content .manga-desc {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .manga-content .manga-desc strong { color: var(--ink); }
+  .manga-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .manga-badge.gold { background: var(--gold); color: var(--ink); }
+
+  /* ========== OTAMATSURI INVITE ========== */
+  .invite-card {
+    background: linear-gradient(135deg, var(--indigo), #2d2a8a);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid var(--lilac);
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+  .invite-card::before {
+    content: '✦ ✦ ✦';
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--lilac);
+    opacity: 0.3;
+    letter-spacing: 8px;
+    font-size: 0.6rem;
+  }
+  .invite-card .invite-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--lilac);
+    margin-bottom: 0.75rem;
+  }
+  .invite-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  .invite-card p {
+    font-size: 0.88rem;
+    color: #a09ab8;
+    line-height: 1.8;
+    max-width: 440px;
+    margin: 0 auto 0.5rem;
+  }
+  .invite-card p strong { color: white; }
+  .invite-card .odds-pill {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-top: 0.75rem;
+  }
+
+  /* ========== LAME FRIEND CARD ========== */
+  .sticky-note {
+    background: var(--gold-soft);
+    border: 1.5px solid var(--gold);
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 3px 3px 0 #d97706;
+    position: relative;
+    transform: rotate(0.5deg);
+  }
+  .sticky-note::after {
+    content: '📌';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+  }
+  .sticky-note p {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .sticky-note p:last-of-type { margin-bottom: 0; }
+  .sticky-note p strong { color: var(--ink); }
+
+  /* ========== BLESSING ========== */
+  .blessing-section {
+    background: var(--coral-soft);
+    padding: 4rem 1.5rem;
+  }
+  .blessing-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .blessing-inner h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+  }
+  .blessing-inner h2 .coral { color: var(--coral); }
+  .blessing-inner p {
+    font-size: 0.93rem;
+    line-height: 2;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 1rem;
+  }
+  .blessing-inner p strong { color: var(--ink); }
+
+  /* ========== CLOSING ========== */
+  .closing-section {
+    text-align: center;
+    padding: 5rem 1.5rem;
+    background: var(--cream);
+  }
+  .closing-big {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 10vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -2px;
+    color: var(--ink);
+  }
+  .closing-big .coral { color: var(--coral); font-style: italic; }
+  .closing-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--ink-dim);
+    margin-top: 1.5rem;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--ink);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.65rem;
+    color: var(--ink-dim);
+    letter-spacing: 1.5px;
+  }
+  footer a { color: var(--coral); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ========== DIVIDER ========== */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .dl { flex: 1; height: 1.5px; background: repeating-linear-gradient(90deg, var(--ink) 0, var(--ink) 4px, transparent 4px, transparent 10px); opacity: 0.1; }
+  .di { font-size: 1rem; }
+
+  /* ========== KEYFRAMES ========== */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 560px) {
+    .zcard { padding: 1.5rem; }
+    .zcard:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-wash"></div>
+  <div class="hero-bg-text">HAPPY BIRTHDAY</div>
+  <div class="hero-inner">
+    <div class="hero-pretag">Some kid somewhere can't count to your new age 😂</div>
+    <h1>
+      Happy
+      <span class="name-coral">Birthday<br>Aimee!!</span>
+    </h1>
+    <p class="hero-kid-note">another year of being an absolute menace to society. congrats. 🎂</p>
+    <div class="scroll-down">
+      keep scrolling
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== THE ARC ========== -->
+<div class="wrap reveal" data-reveal>
+  <div class="sticker coral">📋 The Plot Twist Arc</div>
+  <div class="arc-timeline">
+    <div class="arc-step">
+      <div class="arc-num">1</div>
+      <div class="arc-label">Camp I — The Beginning</div>
+      <div class="arc-text">I show up as facilitator. You show up as participant. I was, objectively, a mentor figure. Very professional. Very structured. Very mentor-coded.</div>
+    </div>
+    <div class="arc-step">
+      <div class="arc-num">2</div>
+      <div class="arc-label">Camp II — The Betrayal</div>
+      <div class="arc-text">Two years later. We're both participants. The power dynamic has completely collapsed. We are, apparently, equals now. And fate had us seated around a bonfire as a 'pair'. Even Toph didn't see that one coming, lol. 🪨</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><div class="dl"></div><div class="di">✦</div><div class="dl"></div></div>
+
+<!-- ========== THE DATA SCIENCE THING ========== -->
+<div class="wrap reveal" data-reveal>
+  <div class="sticker indigo">🎓 The Advisory Session</div>
+  <div class="zcard indigo-border">
+    <h2>So you picked <span class="italic">Data Science.</span></h2>
+    <p>You came to me when you were deciding, and I gave you my honest take. But here's the thing — <strong>advice only lands on the right people.</strong> The kind of person who asks good questions, thinks carefully, and then actually commits? That's not common. That's you.</p>
+    <p>Data Science is going to suit <s>you</s> us well, <s>I hope</s> Amen. 🙏</p>
+  </div>
+</div>
+
+<div class="pull-quote reveal" data-reveal>
+  <blockquote>"She asked for advice,<br>took it seriously,<br>and <span class="coral">ran with it.</span>"</blockquote>
+  <div class="attr">— the facilitator, still somewhat proud about this 🫡</div>
+</div>
+
+<!-- ========== ANIME BAND ========== -->
+<div class="band reveal" data-reveal>
+  <div class="band-inner">
+    <h2>The <span class="coral">Anime</span><br>Conversion <span class="lilac">Arc.</span></h2>
+    <p>Aimee. I want to formally, on this birthday website, <strong>thank you</strong> for ushering me into anime.</p>
+    <p>Because now I'm out here <strong>waiting for manga chapters to drop</strong> — chapters, Aimee — like it's a new religion. <span class="teal-pop">Solo Leveling</span> started an avalanche I did not anticipate and I have <strong>no regrets.</strong></p>
+    <p>You did this. This is your legacy. <span class="gold-pop">You are, low key, the reason.</span> 😂</p>
+
+    <div class="manga-panel">
+      <div class="manga-panel-header">📖 The Anime Record</div>
+      <div class="manga-panel-body">
+        <div class="manga-row">
+          <div class="manga-icon">🌀</div>
+          <div class="manga-content">
+            <div class="manga-title" style="color: #1a1523;">The Introduction <span class="manga-badge gold">credit: Aimee</span></div>
+            <div class="manga-desc">Planted the seed. Watered it. Did not warn me about what was going to happen to my free time.</div>
+          </div>
+        </div>
+        <div class="manga-row">
+          <div class="manga-icon">⚔️</div>
+          <div class="manga-content">
+            <div class="manga-title">Blue Lock <span class="manga-badge">Currently Reading</span></div>
+            <div class="manga-desc">Blue Lock has my whole attention. I am <strong>waiting for chapters to release</strong> like it's a sport. This is your fault. Thank you genuinely.</div>
+          </div>
+        </div>
+        <div class="manga-row">
+          <div class="manga-icon">🎌</div>
+          <div class="manga-content">
+            <div class="manga-title" style="color: #1a1523;">Otamatsuri — The Invitation</div>
+            <div class="manga-desc">Odds of me attending: <strong>90%.</strong> I may or may not have cosplay already sorted 💀. <br>If you want to come, the door is very much open. No pressure. But also — come.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== LAME FRIEND ACKNOWLEDGMENT ========== -->
+<div class="wrap reveal" data-reveal>
+  <div class="sticker gold">📌 A Small Confession</div>
+  <div class="sticky-note">
+    <p>Okay so. I'll admit it — I'm not the most consistent friend. <strong>That's on me.</strong></p>
+    <p>We don't cross paths as much as we used to — church, life, timing. But I want you to know: I will remember your birthday every year without being reminded — too bad you posted it on your status. 😅</p>
+  </div>
+</div>
+
+<div class="divider"><div class="dl"></div><div class="di">🌸</div><div class="dl"></div></div>
+
+<!-- ========== BLESSING ========== -->
+<div class="blessing-section reveal" data-reveal>
+  <div class="blessing-inner">
+    <h2>A birthday<br>blessing <span class="coral">for you.</span></h2>
+    <p>Aimee, I pray you get so successful that <strong>you impress yourself.</strong> That you look at your own life one day and go — wait, I actually did that? Like genuine, pleasant disbelief at your own wins.</p>
+    <p>I pray for a long and happy life. For good health, great people around you, and a Data Science career that makes the choice feel like the most obvious one you ever made.</p>
+    <p>I hope today was an absolute blast — the kind of birthday you talk about for a while. You deserve it.</p>
+    <p>And when you're a hundred years old, still somehow watching new anime and enjoying a fat pension from a successful career — <strong>may you still be thriving.</strong> 🎌🤍</p>
+  </div>
+</div>
+
+<!-- ========== CLOSING ========== -->
+<div class="closing-section reveal" data-reveal>
+  <div class="closing-big">
+    Happy
+    <span class="coral">Birthday,<br>Aimee.</span>
+  </div>
+  <div class="closing-sub">From your former facilitator, current fellow anime enjoyer. 🫡<br>Blessings — Alexander.</div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  made with <a href="https://wrapsite.vercel.app">Wrapsite</a>
+</footer>
+
+<script>
+  // ========== SCROLL REVEAL ==========
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
